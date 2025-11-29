@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Birthday honney :)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Puedes cambiar la fuente si quieres -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Cookie&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================
+           ESTILO GENERAL
+        ========================== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            /* 🔵 Fondo un poco más azulado */
+            background: radial-gradient(circle at top,
+                #ffe4f3 0%,
+                #f9cfe3 25%,
+                #e0f2fe 60%,
+                #bfdbfe 100%);
+            font-family: "Poppins", sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px 10px 40px;
+            color: #5a1b3a;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+        }
+
+        /* =========================
+           SECCIÓN DEL PASTEL
+        ========================== */
+        .top-section {
+            position: relative;
+            /* 🔵 Panel también con toque azul */
+            background: linear-gradient(180deg, #ffd6e8, #e0f2fe);
+            border-radius: 20px;
+            padding: 40px 20px 60px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        /* Confeti */
+        .confetti {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .confetti span {
+            position: absolute;
+            top: -10px;
+            width: 8px;
+            height: 14px;
+            border-radius: 2px;
+            opacity: 0.8;
+            animation-name: fall;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10px) rotate(0deg);
+            }
+            100% {
+                transform: translateY(120vh) rotate(360deg);
+            }
+        }
+
+        /* Pastel */
+        .cake-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .cake {
+            position: relative;
+            width: 140px;
+            height: 120px;
+        }
+
+        .cake-layer {
+            position: absolute;
+            width: 100%;
+            height: 26px;
+            border-radius: 10px;
+            left: 0;
+            opacity: 0;
+            transform: translateY(-200px);
+            animation: dropLayer 0.8s forwards;
+        }
+
+        .cake-layer.layer1 {
+            bottom: 0;
+            background: #7b4a35;
+            animation-delay: 0.2s;
+        }
+
+        .cake-layer.layer2 {
+            bottom: 26px;
+            background: #9b5b3f;
+            animation-delay: 0.7s;
+        }
+
+        .cake-layer.layer3 {
+            bottom: 52px;
+            background: #c27d54;
+            animation-delay: 1.2s;
+        }
+
+        .cake-icing {
+            position: absolute;
+            bottom: 74px;
+            left: 8px;
+            right: 8px;
+            height: 26px;
+            background: #fff;
+            border-radius: 12px 12px 18px 18px;
+            opacity: 0;
+            transform: translateY(-200px);
+            animation: dropLayer 0.8s forwards;
+            animation-delay: 1.7s;
+        }
+
+        .cake-icing::before,
+        .cake-icing::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 18px;
+            background: #fff;
+            border-radius: 0 0 18px 18px;
+            bottom: -10px;
+        }
+
+        .cake-icing::before {
+            left: 15px;
+        }
+
+        .cake-icing::after {
+            right: 20px;
+        }
+
+        /* Vela */
+        .candle {
+            position: absolute;
+            width: 12px;
+            height: 40px;
+            background: #ffe5ec;
+            border-radius: 6px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-200px);
+            bottom: 98px;
+            opacity: 0;
+            animation: dropLayer 0.8s forwards;
+            animation-delay: 2.2s;
+        }
+
+        .candle::before {
+            content: "";
+            position: absolute;
+            inset: 4px;
+            border-radius: 6px;
+            background: repeating-linear-gradient(
+                45deg,
+                #ff7aa2 0,
+                #ff7aa2 4px,
+                #ffd5e0 4px,
+                #ffd5e0 8px
+            );
+        }
+
+        .flame {
+            position: absolute;
+            width: 18px;
+            height: 26px;
+            background: radial-gradient(circle at 30% 20%, #fff7cc 0%, #ffd54a 30%, #ffb300 70%, transparent 72%);
+            border-radius: 50% 50% 50% 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 132px;
+            opacity: 0;
+            animation: appearFlame 0.8s forwards 2.8s, flicker 0.18s infinite alternate 3.6s;
+            filter: drop-shadow(0 0 8px rgba(255, 213, 74, 0.9));
+        }
+
+        @keyframes dropLayer {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes appearFlame {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes flicker {
+            from {
+                transform: translateX(-50%) scale(1);
+            }
+            to {
+                transform: translateX(-50%) scale(1.12);
+            }
+        }
+
+        /* Texto con efecto de escribir */
+        .typed-text {
+            text-align: center;
+            font-family: "Cookie", cursive;
+            font-size: 2.5rem;
+            color: #b3204d;
+            text-shadow: 0 2px 4px rgba(128,0,64,0.35);
+            min-height: 56px;
+        }
+
+        /* Botón para bajar a la carta */
+        .btn-open-card {
+            display: block;
+            margin: 25px auto 0;
+            padding: 10px 28px;
+            border-radius: 999px;
+            border: none;
+            background: #fff;
+            color: #b3204d;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.95rem;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+
+        .btn-open-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+            background: #ffe7f0;
+        }
+
+        /* =========================
+           CARTA TIPO CUADERNO
+        ========================== */
+        .card-section {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .book {
+            width: 320px;
+            height: 420px;
+            position: relative;
+            perspective: 1200px;
+        }
+
+        .page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            background: #f4eee6;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transform-origin: left center;
+            backface-visibility: hidden;
+        }
+
+        /* Portada (dino) */
+        .cover {
+            background: #f2e0c9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px 20px;
+            cursor: pointer;
+            z-index: 2;
+            transition: box-shadow 0.3s;
+        }
+
+        .cover:hover {
+            box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+        }
+
+        .cover img {
+            max-width: 80%;
+            max-height: 65%;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+
+        .cover h2 {
+            font-family: "Cookie", cursive;
+            font-size: 2.2rem;
+            color: #c63843;
+            text-align: center;
+        }
+
+        /* Interior */
+        .inside {
+            background: #fdf9f4;
+            padding: 32px 26px;
+            transform: rotateY(-180deg);
+        }
+
+        .inside h3 {
+            text-align: center;
+            font-family: "Cookie", cursive;
+            font-size: 2rem;
+            color: #0d9472;
+            margin-bottom: 10px;
+        }
+
+        .inside h4 {
+            text-align: center;
+            color: #d54040;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        .inside p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #555;
+            margin-bottom: 6px;
+        }
+
+        .inside .signature {
+            margin-top: 16px;
+            text-align: right;
+            font-family: "Cookie", cursive;
+            font-size: 1.4rem;
+            color: #c63843;
+        }
+
+        /* Animación de apertura */
+        .book.open .cover {
+            animation: flipCover 0.9s forwards;
+        }
+
+        .book.open .inside {
+            animation: showInside 0.9s forwards;
+        }
+
+        @keyframes flipCover {
+            to {
+                transform: rotateY(-180deg);
+            }
+        }
+
+        @keyframes showInside {
+            to {
+                transform: rotateY(0deg);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .typed-text {
+                font-size: 2rem;
+            }
+            .book {
+                width: 280px;
+                height: 380px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- =====================
+             SECCIÓN PASTEL + TEXTO
+        ====================== -->
+        <section class="top-section">
+            <div class="confetti" id="confetti"></div>
+
+            <div class="cake-wrapper">
+                <div class="cake">
+                    <div class="cake-layer layer1"></div>
+                    <div class="cake-layer layer2"></div>
+                    <div class="cake-layer layer3"></div>
+                    <div class="cake-icing"></div>
+                    <div class="candle"></div>
+                    <div class="flame"></div>
+                </div>
+            </div>
+
+            <div class="typed-text" id="typedText"></div>
+
+            <button class="btn-open-card" id="btnToCard">
+                Ver la tarjeta 💌
+            </button>
+        </section>
+
+        <!-- =====================
+             CARTA
+        ====================== -->
+        <section class="card-section">
+            <div class="book" id="book">
+                <!-- Portada con dino -->
+                <div class="page cover" id="cover">
+                    <!-- Usa tu PNG recortado -->
+                    <img src="dino.jpg" alt="Dino de cumpleaños">
+                    <h2>Happy Birthday honney :)</h2>
+                </div>
+
+                <!-- Interior de la carta -->
+                <div class="page inside" id="inside">
+                    <h3>¡Feliz cumpleaños!</h3>
+                    <h4>Que disfrutes muchísimo de este día 💚</h4>
+
+                    <p>Te deseo un cumpleaños muy especial y lleno de alegría.</p>
+                    <p>Que tu vida siga estando rodeada de momentos bonitos,</p>
+                    <p>de paz, de salud y de mucho amor.</p>
+                    <p>Gracias por existir y por hacer mis días más felices. ✨</p>
+
+                    <p class="signature">Con cariño, &lt;jk&gt; 💌</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Música de fondo -->
+    <audio id="bgMusic" src="Brian Rahmattio - Happy Birthday ( Official Lyrics Video ) - Brian Rahmattio.mp3" preload="auto"></audio>
+
+    <script>
+        // ===============================
+        // Confeti aleatorio
+        // ===============================
+        (function makeConfetti() {
+            const confettiContainer = document.getElementById('confetti');
+            const colors = ['#ffe4f3', '#ffe7b8', '#ffd1dc', '#e0f2fe', '#c7d2fe'];
+            const shapes = ['square', 'circle', 'rect'];
+
+            for (let i = 0; i < 80; i++) {
+                const piece = document.createElement('span');
+                const size = Math.random() * 8 + 4;
+                const left = Math.random() * 100;
+                const delay = Math.random() * 5;
+                const duration = 4 + Math.random() * 4;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const shape = shapes[Math.floor(Math.random() * shapes.length)];
+
+                piece.style.left = left + '%';
+                piece.style.width = size + 'px';
+
+                if (shape === 'circle') {
+                    piece.style.height = size + 'px';
+                    piece.style.borderRadius = '50%';
+                } else if (shape === 'square') {
+                    piece.style.height = size + 'px';
+                } else { // rect
+                    piece.style.height = size * 1.6 + 'px';
+                }
+
+                piece.style.background = color;
+                piece.style.animationDuration = duration + 's';
+                piece.style.animationDelay = delay + 's';
+
+                confettiContainer.appendChild(piece);
+            }
+        })();
+
+        // ===============================
+        // Efecto de escribir texto
+        // ===============================
+        const text = "Happy Birthday honney :)";
+        const typedEl = document.getElementById('typedText');
+        let index = 0;
+
+        function typeWriter() {
+            if (index <= text.length) {
+                typedEl.textContent = text.slice(0, index);
+                index++;
+                setTimeout(typeWriter, 120); // velocidad de escritura
+            }
+        }
+
+        window.addEventListener('load', typeWriter);
+
+        // ===============================
+        // Scroll suave a la carta
+        // ===============================
+        const btnToCard = document.getElementById('btnToCard');
+        btnToCard.addEventListener('click', () => {
+            document.querySelector('.card-section').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // ===============================
+        // Apertura de la carta + música
+        // ===============================
+        const book = document.getElementById('book');
+        const cover = document.getElementById('cover');
+        const bgMusic = document.getElementById('bgMusic');
+
+        cover.addEventListener('click', () => {
+            // Abrir carta
+            book.classList.add('open');
+
+            // Reproducir música (si el navegador lo permite)
+            bgMusic.volume = 0.4;
+            bgMusic.play().catch(() => {
+                // Navegador bloqueó autoplay, no pasa nada
+            });
+        });
+    </script>
+</body>
+</html>
